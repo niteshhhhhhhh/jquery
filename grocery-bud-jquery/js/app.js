@@ -69,6 +69,40 @@ function loadList() {
   }
 }
 
+export function addItem(itemName) {
+  const $listContainer = $('#list-container');
+  if(itemName === '') {
+    alert('You must write something!');
+    return;
+  }
+  
+  const $li = $('<li>').text(itemName);
+  
+  // Create buttons container
+  const $buttonsSpan = $('<span>').addClass('item-buttons');
+  
+  // Edit button with ✎ icon
+  const $editBtn = $('<span>')
+    .addClass('edit-btn')
+    .html('✎')
+    .attr('title', 'Edit item');
+  
+  // Delete button with × icon
+  const $deleteBtn = $('<span>')
+    .addClass('delete-btn')  
+    .html('×')
+    .attr('title', 'Delete item');
+  
+  $buttonsSpan.append($editBtn, $deleteBtn);
+  $li.append($buttonsSpan);
+  
+  $listContainer.append($li);
+  
+  saveList();
+  
+  setTimeout(() => alert("Item Added Successfully!"), 0);
+}
+
 
 $(document).ready(() => {
   initializeForm();
