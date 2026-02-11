@@ -14,4 +14,13 @@ export function initializeForm() {
     $inputBox.focus(); // Keep focus on input
   });
 
+    $inputBox.on('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        handleFormSubmit($inputBox.val().trim());
+        if (!$addBtn.text().includes('Update')) {
+        $inputBox.val(''); // Only clear if not in edit mode
+        }
+    }
+    });
 }
