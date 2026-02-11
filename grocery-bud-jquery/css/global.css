@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(https://media.istockphoto.com/id/1173579665/vector/seamless-pattern-supermarket-grocery-store-food-drinks-vegetables-fruits-fish-meat-dairy.jpg?s=612x612&w=0&k=20&c=XQQ9oPb6lx4m32iPIrmb1fzugwqr-WRUJo8nTod1D2Q=);
+  padding: 10px;
+}
+
+.grocery-bud {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 5px;
+}
+
+.grocery-bud h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grocery-bud img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.row {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f2f6;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 16px;
+}
+button {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 16px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+ul li {
+  list-style: none;
+  font-size: 18px;
+  padding: 12px 8px 12px 20px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li::before {
+  content: "◯";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 12px;
+  left: -12px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+ul li.checked {
+  color: #95a5a6;
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  content: "✓";
+  color: #27ae60;
+}
+
+.item-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  cursor: pointer;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  color: #3498db;
+}
+
+.edit-btn:hover {
+  background-color: #ebf5fb;
+  color: #2980b9;
+}
+
+.delete-btn {
+  color: #e74c3c;
+}
+
+.delete-btn:hover {
+  background-color: #fdedec;
+  color: #c0392b;
+}
+
+ul li span:hover {
+  cursor: pointer;
+  border-radius: 40%;
+}
