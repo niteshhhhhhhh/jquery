@@ -104,6 +104,75 @@ export function addItem(itemName) {
 }
 
 
+export function toggleChecked($liElement) {
+  $liElement.toggleClass('checked');
+  saveList();
+}
+
+export function removeItem($deleteBtn) {
+  $deleteBtn.closest('li').remove();
+  saveList();
+  
+  setTimeout(() => alert("Item Deleted Successfully!"), 0);
+}
+
+export function editItem($editBtn) {
+  const $li = $editBtn.closest('li');
+  const itemText = $li.contents().first().text();
+  
+  // Enter edit mode
+  editMode = true;
+  itemToEdit = $li;
+  
+  // Change input and button in form
+  const $inputBox = $('#grocery-input');
+  const $addBtn = $('#add-btn');
+  
+  if ($inputBox.length && $addBtn.length) {
+    $inputBox.val(itemText).focus();
+    $addBtn.text('Update Item').css('background', '#f39c12'); // Orange color for update
+  }
+}
+
+
+export function updateItem(newText) {
+  if (!itemToEdit || !editMode) return;
+  
+  if(newText === '') {
+    alert('Item cannot be empty!');
+    return;
+  }
+  
+  // Update the text content (first child is text node)
+  itemToEdit.contents().first().replaceWith(newText);
+  
+  // Exit edit mode
+  editMode = false;
+  itemToEdit = null;
+  
+  // Reset form
+  const $inputBox = $('#grocery-input');
+  const $addBtn = $('#add-btn');
+  
+  if ($inputBox.length && $addBtn.length) {
+    $inputBox.val('');
+    $addBtn.text('Add Item').css('background', '#27ae60'); // Reset to green
+  }
+  
+  saveList();
+  
+  setTimeout(() => alert("Item Updated Successfully!"), 0);
+}
+
+export function handleFormSubmit(itemText) {
+  if (editMode) {
+    updateItem(itemText);
+  } else {
+    addItem(itemText);
+  }
+}
+
+
 $(document).ready(() => {
   initializeForm();
   initializeItems();
